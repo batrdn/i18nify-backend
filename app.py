@@ -11,9 +11,16 @@ def get_valid_words():
         result = []
         for word in data['words']:
             is_sentence = len(word.split())
-            if is_sentence:
-                result.append(word)
-                continue
+            if is_sentence > 1:
+                is_valid = True
+                for sentence_word in word.split():
+                    is_sentence_word = check_word(sentence_word)
+                    if not is_sentence_word:
+                        is_valid = False
+                        break
+                if is_valid:
+                    result.append(word)
+                    continue
             is_word = check_word(word)
             if is_word:
                 result.append(word)
