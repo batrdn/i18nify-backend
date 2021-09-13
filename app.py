@@ -10,6 +10,10 @@ def get_valid_words():
         data = request.get_json()
         result = []
         for word in data['words']:
+            is_sentence = len(word.split())
+            if is_sentence:
+                result.append(word)
+                continue
             is_word = check_word(word)
             if is_word:
                 result.append(word)
