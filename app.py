@@ -14,7 +14,7 @@ def get_valid_words():
             if is_word:
                 result.append(word)
         return json.dumps({
-            "validWords": set(result)
+            "validWords": list(set(result))
         })
 
 @app.route('/translation-key-generator')
