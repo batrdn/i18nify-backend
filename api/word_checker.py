@@ -2,7 +2,7 @@ from enchant import Dict
 import re
 
 def check_word(word):
-    if word is None or word == '':
+    if word is None or word.strip() == '':
         return False
     # Checks for cyrillic text
     if bool(re.search('[а-яА-Я]', word)):
