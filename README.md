@@ -18,5 +18,5 @@ By default, `pyenchant` comes with English dictionaries, and dictionaries in oth
 - Russian
 
 ### How to run?
-`docker-compose up`. The service will run at the port 5000.
+`docker-compose up --build`. The service will run at the port 5000.
 

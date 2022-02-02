@@ -1,6 +1,5 @@
 from flask import Flask, request, json
-from api.word_checker import check_word
-from api.translation_key_generator import generate_translation_key
+from utils.word_checker import check_word
 
 app = Flask(__name__)
 
@@ -11,6 +10,7 @@ def get_valid_words():
         result = []
         for word in data['words']:
             word_length = len(word.split())
+            
             if word_length > 1:
                 is_valid = False
                 for sentence_word in word.split():
@@ -34,9 +34,3 @@ def get_valid_words():
         return json.dumps({
             "validWords": list(set(result))
         })
-
-@app.route('/translation-key-generator')
-def translation_key():
-    return json.dumps({
-        "translationKey": generate_translation_key(request.args.get("word"))
-    })
